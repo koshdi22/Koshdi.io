@@ -8,6 +8,15 @@ function navigate(page) {
     l.classList.toggle('active-link', l.dataset.page === page);
   });
 
+  // 👇 ВАЖНО
+  if (page === 'home') {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.classList.remove('no-scroll');
+  }
+
+  window.scrollTo(0, 0);
+
   document.documentElement.style.visibility = 'visible';
   lucide.createIcons();
 }
