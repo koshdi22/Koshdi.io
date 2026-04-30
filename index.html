@@ -61,7 +61,7 @@ tailwind.config = {
      KOSHDI
     </div>
     <div class="nav-container flex items-center gap-6 md:gap-8 text-sm font-medium tracking-wide uppercase">
-     <span class="nav-link" data-page="home" onclick="navigate('home')">Home</span> <span class="nav-link" data-page="gallery" onclick="navigate('gallery')">Gallery</span> <span class="nav-link" data-page="commissions" onclick="navigate('commissions')">Commissions</span> <span class="nav-link" data-page="testimonials" onclick="navigate('testimonials')">Testimonials</span> <span class="nav-link" data-page="projects" onclick="navigate('projects')">Projects</span> <span class="nav-link" data-page="about" onclick="navigate('about')">About</span>
+     <span class="nav-link active-link" data-page="home" onclick="navigate('home')">Home</span> <span class="nav-link" data-page="gallery" onclick="navigate('gallery')">Gallery</span> <span class="nav-link" data-page="commissions" onclick="navigate('commissions')">Commissions</span> <span class="nav-link" data-page="testimonials" onclick="navigate('testimonials')">Testimonials</span> <span class="nav-link" data-page="projects" onclick="navigate('projects')">Projects</span> <span class="nav-link" data-page="about" onclick="navigate('about')">About</span>
     </div>
    </nav><!-- Pages Container -->
    <div class="flex-1 overflow-auto w-full">
@@ -408,6 +408,9 @@ function initPageFromHash() {
   navigate(page, false);
   document.documentElement.style.visibility = 'visible';
 }
+window.addEventListener('load', initPageFromHash);
+window.addEventListener('hashchange', initPageFromHash);
+
 
 
 function toggleTOS() {
@@ -497,17 +500,18 @@ window.elementSdk.init({
   ])
 });
 
-   function initPageFromHash() {
+window.addEventListener('load', () => {
   const page = window.location.hash.replace('#', '') || 'home';
-  navigate(page, false);
-  document.documentElement.style.visibility = 'visible';
-}
+  navigate(page);
+});
 
-window.addEventListener('load', initPageFromHash);
-window.addEventListener('hashchange', initPageFromHash);
-   
+window.addEventListener('hashchange', () => {
+  const page = window.location.hash.replace('#', '') || 'home';
+  navigate(page);
+});
 
 lucide.createIcons();
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f3703afa21c2479',t:'MTc3NzM4OTI0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
