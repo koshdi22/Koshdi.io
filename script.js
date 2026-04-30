@@ -2,23 +2,32 @@ function navigate(page) {
   window.location.hash = page;
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+ const target = document.getElementById('page-' + page);
+  target.classList.add('active');
 
   document.querySelectorAll('.nav-link').forEach(l => {
     l.classList.toggle('active-link', l.dataset.page === page);
   });
+  
+const marquee = document.getElementById('home-marquee');
 
-  // 👇 ВАЖНО
+if (page === 'home') {
+  marquee.style.display = 'block';
+} else {
+  marquee.style.display = 'none';
+}
+  
+  const container = document.querySelector('.flex-1.overflow-auto');
+
   if (page === 'home') {
-    document.body.classList.add('no-scroll');
+    container.style.overflow = 'hidden';
   } else {
-    document.body.classList.remove('no-scroll');
+    container.style.overflow = 'auto';
+    container.scrollTop = 0;
   }
 
-  window.scrollTo(0, 0);
-
-  document.documentElement.style.visibility = 'visible';
   lucide.createIcons();
+  document.documentElement.style.visibility = 'visible';
 }
 
 window.addEventListener('load', () => {
