@@ -11,19 +11,8 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-.page-home-fixed {
-  height: calc(100vh - 60px);
-  overflow: hidden;
-}
-
 .page { display: none; }
 .page.active { display: flex; }
-
-#main-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
 
 .nav-link {
   position: relative;
@@ -112,17 +101,6 @@ body {
   border-color: #1e1d21;
   color: #1e1d21;
 }
-
-
-button {
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
 button:active {
   transform: translateY(0);
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
