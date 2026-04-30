@@ -1,4 +1,6 @@
-html { visibility: hidden; }
+html {
+  scrollbar-gutter: stable;
+}
 
 body {
   height: 100%;
