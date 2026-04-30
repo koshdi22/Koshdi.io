@@ -2,34 +2,15 @@ function navigate(page) {
   window.location.hash = page;
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('page-' + page);
-  target.classList.add('active');
+  document.getElementById('page-' + page).classList.add('active');
 
   document.querySelectorAll('.nav-link').forEach(l => {
     l.classList.toggle('active-link', l.dataset.page === page);
   });
-  
-const marquee = document.getElementById('home-marquee');
 
-if (page === 'home') {
-  marquee.style.display = 'block';
-} else {
-  marquee.style.display = 'none';
-}
-  
-  const container = document.querySelector('.flex-1.overflow-auto');
-
-  if (page === 'home') {
-    container.style.overflow = 'hidden';
-  } else {
-    container.style.overflow = 'auto';
-    container.scrollTop = 0;
-  }
-
-  lucide.createIcons();
   document.documentElement.style.visibility = 'visible';
+  lucide.createIcons();
 }
-
 
 window.addEventListener('load', () => {
   const page = window.location.hash.replace('#', '') || 'home';
